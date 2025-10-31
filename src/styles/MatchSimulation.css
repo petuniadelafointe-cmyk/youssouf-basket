@@ -1,0 +1,203 @@
+.simulation-container {
+  min-height: 100vh;
+  padding: 2rem;
+  background: url('https://images.unsplash.com/photo-1544912041-0262d7d8f063?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat, linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  position: relative;
+}
+.simulation-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+  pointer-events: none;
+}
+
+.simulation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.simulation-header h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  flex: 1;
+}
+
+.stats-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.stats-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.match-area {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+}
+
+.team {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.team h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.team-icon {
+  font-size: 5rem;
+  margin: 1rem 0;
+}
+
+.score {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #4fd1c5;
+  margin-top: 1rem;
+  animation: scoreAppear 0.5s ease-out;
+}
+
+.vs {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.simulating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #4fd1c5;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.result-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: resultAppear 0.5s ease-out;
+}
+
+.result-box.victoire {
+  border-color: #4ade80;
+  background: rgba(74, 222, 128, 0.1);
+}
+
+.result-box.défaite {
+  border-color: #f87171;
+  background: rgba(248, 113, 113, 0.1);
+}
+
+.result-box h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.result-box p {
+  font-size: 1.3rem;
+}
+
+.simulate-btn {
+  display: block;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1.5rem 3rem;
+  font-size: 1.3rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.simulate-btn:hover:not(:disabled) {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+}
+
+.simulate-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@keyframes scoreAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes resultAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .match-area {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .vs {
+    font-size: 2rem;
+  }
+  .simulation-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .simulation-container { padding: 1.2rem; }
+  .match-area { padding: 1rem; }
+  .team { padding: 1.2rem; }
+}
