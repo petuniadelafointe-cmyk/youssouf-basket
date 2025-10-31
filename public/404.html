@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="0; url=/youssouf-basket/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Redirect</title>
+  </head>
+  <body>
+    <script>
+      // Attempt to preserve hash route
+      var loc = window.location;
+      var base = '/youssouf-basket/';
+      var target = base + (loc.hash || '');
+      loc.replace(target);
+    </script>
+  </body>
+</html>
